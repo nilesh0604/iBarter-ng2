@@ -7,11 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegisterComponent implements OnInit {
 
+	currentTab = 'login';
+
   constructor() { }
 
   ngOnInit() {
   	
 
+  }
+
+  autheticate(formVal:any){
+  	console.log(formVal);
+  }
+
+  changeTab(tab){
+  	this.currentTab = tab;
   }
 
 }

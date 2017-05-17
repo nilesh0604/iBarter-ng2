@@ -35,12 +35,12 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     HttpModule,
     AlertModule.forRoot(),
     RouterModule.forRoot([
-      {path: '', redirectTo: "/login", pathMatch: 'full'},
+      {path: '', redirectTo: "/home", pathMatch: 'full'},
       {path:'login', component: LoginRegisterComponent},
       {path:'home', component: HomeComponent},
       {path:'productDetails/:id', component: ProductDetailsComponent},
-      {path:'productList/:category', component: ProductListComponent},
-      {path: '**', redirectTo: 'login', pathMatch: 'full'}
+      {path:'productList/:category', component: ProductListComponent}
+      /*{path: '**', redirectTo: 'login', pathMatch: 'full'}*/
     ])
   ],
   providers: [],

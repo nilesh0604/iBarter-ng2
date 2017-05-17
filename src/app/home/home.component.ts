@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
     this.userService.isAutheticated = true;
     this.userAuthetication.emit(this.userService.isAutheticated);
 
-    console.log(this.userService.isAutheticated);
   	this._productService.getLatestProducts(6)
   	.subscribe(resProductsData => this.products = resProductsData,
   				resProductsError => this.errorMsg = resProductsError);
