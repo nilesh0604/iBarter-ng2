@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <app-leftnav class="col-lg-3" *ngIf="isAutheticate" ></app-leftnav>
+        <!-- /.col-lg-3 -->
+        <div [ngClass]="{'col-lg-9': isAutheticate, 'col-lg-12': !isAutheticate}" (userAuthetication)="isAutheticated=$event" >
+            <router-outlet ></router-outlet>
+        </div>
+        <!-- /.col-lg-9 -->
+    </div>
+    <!-- /.row -->
+</div>
