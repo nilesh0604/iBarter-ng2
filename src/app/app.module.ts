@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,13 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     RouterModule.forRoot([
       {path: '', redirectTo: "/home", pathMatch: 'full'},
       {path:'login', component: LoginRegisterComponent},
-      {path:'home', component: HomeComponent},
+      {path:'home', component: HomeComponent, canActivate: [AuthGuard]},
       {path:'productDetails/:id', component: ProductDetailsComponent},
       {path:'productList/:category', component: ProductListComponent}
       /*{path: '**', redirectTo: 'login', pathMatch: 'full'}*/
     ])
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
