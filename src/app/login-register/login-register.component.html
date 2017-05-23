@@ -8,7 +8,7 @@
                             <a [ngClass]="{'active': currentTab === 'login'}" (click)="changeTab('login')" id="login-form-link">Login</a>
                         </div>
                         <div class="col-xs-6">
-                            <a id="register-form-link" [ngClass]="{'active': currentTab === 'register'}" (click)="changeTab('register')" >Register</a>
+                            <a id="register-form-link" [ngClass]="{'active': currentTab === 'register'}" (click)="changeTab('register')">Register</a>
                         </div>
                     </div>
                     <hr>
@@ -19,13 +19,12 @@
                             <form #loginForm="ngForm" *ngIf="currentTab === 'login'" novalidate style="display: block;">
                                 <div class="form-group">
                                     <input type="text" required class="form-control" placeholder="Username" #usernameRef="ngModel" name="username" ngModel>
-
                                     <div [hidden]="usernameRef.valid || usernameRef.pristine" class="alert alert-danger" style="margin-top: 5px; padding: 5px;">Please enter a username</div>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" required class="form-control" placeholder="Password" #passwordRef="ngModel" name="password" ngModel>
                                     <div [hidden]="passwordRef.valid || passwordRef.pristine" class="alert alert-danger" style="margin-top: 5px; padding: 5px;">Please enter a password</div>
-                                </div> 
+                                </div>
                                 <!-- <div class="form-group">
                                         <input type="password" required class="form-control" placeholder="Password" [(ngModel)]="password" ngControl="password" #password="ngForm">
                                     </div> -->
@@ -50,23 +49,31 @@
                                         </div>
                                     </div> -->
                             </form>
-                            <form *ngIf="currentTab === 'register'" >
+                            <form #registerForm="ngForm" *ngIf="currentTab === 'register'">
                                 <div class="form-group">
-                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                    <input type="text" required class="form-control" placeholder="Username" #usernameRef="ngModel" name="username" ngModel>
+
+                                    <div [hidden]="usernameRef.valid || usernameRef.pristine" class="alert alert-danger" style="margin-top: 5px; padding: 5px;">Please enter a username</div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                    <input type="email" required name="email" class="form-control" placeholder="Email Address" #emailRef="ngModel" ngModel>
+
+                                    <div [hidden]="emailRef.valid || emailRef.pristine" class="alert alert-danger" style="margin-top: 5px; padding: 5px;">Please enter a email</div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    <input type="password" required name="password" class="form-control" placeholder="Password" #passwordRef="ngModel" ngModel>
+
+                                    <div [hidden]="passwordRef.valid || passwordRef.pristine" class="alert alert-danger" style="margin-top: 5px; padding: 5px;">Please enter a password</div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                    <input type="password" required name="confirm-password" class="form-control" placeholder="Confirm Password" #confirmPassRef="ngModel" ngModel>
+
+                                    <div [hidden]="confirmPassRef.valid || confirmPassRef.pristine" class="alert alert-danger" style="margin-top: 5px; padding: 5px;">Please confirm the password</div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                            <button class="btn btn-login form-control" [disabled]="!registerForm.valid" (click)="register(registerForm.value)">Login</button>
                                         </div>
                                     </div>
                                 </div>

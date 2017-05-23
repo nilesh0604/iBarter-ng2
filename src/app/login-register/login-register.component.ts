@@ -44,6 +44,24 @@ export class LoginRegisterComponent implements OnInit {
       );
   }
 
+  register(formVal){
+    formVal.first_name = "";
+    formVal.last_name = "";
+    formVal.mobile = "";
+    formVal.avatar = "";
+    formVal.role = "User";
+    this._authService.register(formVal)
+      .subscribe(
+        data => {
+            this.router.navigate([this.returnUrl]);
+        },
+        error => {
+            //this.alertService.error(error);
+            //this.loading = false;
+        }
+      );
+  }
+
 
   /*resAuthData => this.authData = resAuthData,
           resAuthError => this.errorMsg = resAuthError*/
